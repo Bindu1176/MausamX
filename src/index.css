@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,opsz,wght@0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: var(--background);
+  --color-sidebar: var(--sidebar);
+  --color-card: var(--card);
+  --color-card-elevated: var(--card-elevated);
+  --color-border-theme: var(--border-theme);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+}
+
+:root {
+  --background: #F4F7FB;
+  --sidebar: #FFFFFF;
+  --card: #FFFFFF;
+  --card-elevated: #F8FAFC;
+  --border-theme: #E2E8F0;
+  
+  --text-primary: #0F172A;
+  --text-secondary: #64748B;
+  --text-muted: #94A3B8;
+  
+  --primary: #0284C7;
+  --primary-hover: #0369A1;
+  --success: #16A34A;
+  --warning: #F59E0B;
+  --danger: #DC2626;
+  --info: #0284C7;
+
+  /* Legacy for existing code */
+  --bg-main: var(--background);
+  --bg-sidebar: var(--sidebar);
+  --brand-blue: var(--primary);
+  --brand-blue-hover: var(--primary-hover);
+  --emerald-bg: #ECFDF5;
+  --emerald-accent: var(--success);
+}
+
+.dark {
+  --background: #0B1220;
+  --sidebar: #0F172A;
+  --card: #111C2E;
+  --card-elevated: #162235;
+  --border-theme: #26364A;
+  
+  --text-primary: #F8FAFC;
+  --text-secondary: #A8B4C5;
+  --text-muted: #718096;
+  
+  --primary: #38A8FF;
+  --primary-hover: #5BB8FF;
+  --success: #35C98A;
+  --warning: #F5B84B;
+  --danger: #F26B6B;
+  --info: #38A8FF;
+
+  /* Legacy overrides */
+  --emerald-bg: rgba(53, 201, 138, 0.1);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Add subtle transition for theme switching */
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Only the main scroll area should scroll */
+main {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Button reset */
+button {
+  font-family: inherit;
+}
+
+/* Select reset */
+select {
+  font-family: inherit;
+}
+
+/* Link reset */
+a {
+  text-decoration: none;
+}
+
+/* Animation for landing page */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Print styling */
+@media print {
+  aside, header, button {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+  html, body {
+    overflow: visible !important;
+    height: auto !important;
+  }
+}
+
+/* ============================================
+   HOME PAGE — LIGHT MODE (default)
+   ============================================ */
+
+/* Hero banner: light blue sky gradient */
+.hero-banner {
+  background: linear-gradient(135deg, #BAE6FD 0%, #E0F2FE 50%, #C7D2FE 100%);
+}
+
+/* Monsoon Outlook badge: frosted white pill */
+.monsoon-badge {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--primary);
+}
+
+/* Cloud icon circle: white card */
+.hero-icon-wrap {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Farm advisory card: soft green */
+.farm-advisory-card {
+  background: #ECFDF5;
+  border: 1px solid #BBF7D0;
+}
+
+/* Farm advisory heading: dark green */
+.farm-advisory-heading {
+  color: #14532D;
+}
+
+/* Farm advisory wheat icon wrap: light green ring */
+.farm-advisory-icon {
+  background: rgba(21, 128, 61, 0.15);
+  border: 2px solid #16A34A;
+}
+
+/* Favorable badge: light green tint */
+.favorable-badge {
+  background: rgba(187, 247, 208, 0.9);
+  color: #14532D;
+}
+
+/* Summary icon backgrounds: warm/cool tints */
+.summary-icon-0 { background: #FEF3C7; color: #D97706; }
+.summary-icon-1 { background: #F3E8FF; color: #9333EA; }
+.summary-icon-2 { background: #ECFDF5; color: var(--success); }
+
+/* ============================================
+   HOME PAGE — DARK MODE OVERRIDES
+   Only applied when .dark is on <html>
+   ============================================ */
+
+/* Hero banner: deep navy surface with subtle blue depth */
+.dark .hero-banner {
+  background: linear-gradient(135deg, #111C2E 0%, #162235 60%, #1B2A3D 100%);
+}
+
+/* Monsoon Outlook badge: blue-tinted pill */
+.dark .monsoon-badge {
+  background: rgba(56, 168, 255, 0.12);
+  color: #38A8FF;
+}
+
+/* Cloud icon circle: dark elevated surface */
+.dark .hero-icon-wrap {
+  background: rgba(56, 168, 255, 0.10);
+  color: #38A8FF;
+}
+
+/* Farm advisory card: dark green agricultural surface */
+.dark .farm-advisory-card {
+  background: #102A25;
+  border: 1px solid #23483F;
+}
+
+/* Farm advisory heading: primary white text */
+.dark .farm-advisory-heading {
+  color: #F8FAFC;
+}
+
+/* Farm advisory icon wrap: dark green ring */
+.dark .farm-advisory-icon {
+  background: rgba(53, 201, 138, 0.12);
+  border: 2px solid #23483F;
+}
+
+/* Favorable badge: dark green tinted pill */
+.dark .favorable-badge {
+  background: rgba(53, 201, 138, 0.15);
+  color: #35C98A;
+}
+
+/* Summary icon backgrounds: dark tinted variants */
+.dark .summary-icon-0 { background: rgba(245, 184, 75, 0.12); color: #F5B84B; }
+.dark .summary-icon-1 { background: rgba(147, 51, 234, 0.12); color: #C084FC; }
+.dark .summary-icon-2 { background: rgba(53, 201, 138, 0.12); color: #35C98A; }
+
+/* Dark scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+  background: #26364A;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3A506B;
+}
